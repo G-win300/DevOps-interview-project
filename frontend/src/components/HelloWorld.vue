@@ -40,7 +40,8 @@
       methods: {
         getTime: function() {
           axios
-            .get('http://localhost:9999/time')
+            // .get('http://localhost:9999/time')
+            .get('http://kube.devopsapp.cloud:9999/time')
             .then(response => (this.current_time = response["data"]["current"]))
         }
       }

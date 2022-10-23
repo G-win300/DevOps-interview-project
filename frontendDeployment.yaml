@@ -14,11 +14,10 @@ spec:
       labels:
         app: frontend
     spec:
-      imagePullSecrets:
-        - name: registry-creds
       containers:
         - name: frontend
-          image: {{ .Values.frontend.image }}
+        #   image: {{ .Values.frontend.image }}
+          image: gwin300/frontend1
 
 ---
 apiVersion: v1
