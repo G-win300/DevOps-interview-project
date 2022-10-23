@@ -1,3 +1,3 @@
 # DevOps-test-project
 
-Helm chart deploying two application containers: a frontend made with Vue and its backend made with nodeJS into kubernetes cluster
+Helm chart deploying two application containers: a frontend made with Vue JS and its backend made with nodeJS into AWS kubernetes cluster
