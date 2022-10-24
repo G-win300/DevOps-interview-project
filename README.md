@@ -4,15 +4,15 @@ Helm chart deploying two application containers: a frontend made with Vue JS and
 
 This simple application on the click of a button fetches the current time from the backend api server and displays it in the frontend
 technologies used includes: 
-1. docker, 
+1. Docker, 
 2. Helm, 
 3. kubernetes, 
 4. AWS Application load balancer
 
-how the ingress routing was done
+How the ingress file looks
+
 ```
 apiVersion: networking.k8s.io/v1
-# apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: myingress
@@ -21,6 +21,7 @@ metadata:
     # nginx.ingress.kubernetes.io/use-regex: "true"
     kubernetes.io/ingress.class: "alb"
     alb.ingress.kubernetes.io/scheme: internet-facing
+    
     # Health Check Settings
     alb.ingress.kubernetes.io/healthcheck-protocol: HTTP 
     alb.ingress.kubernetes.io/healthcheck-port: traffic-port
@@ -30,10 +31,10 @@ metadata:
     alb.ingress.kubernetes.io/healthy-threshold-count: '2'
     alb.ingress.kubernetes.io/unhealthy-threshold-count: '2'
     alb.ingress.kubernetes.io/target-type: 'ip'
-    # SSL Redirect Setting
-    # alb.ingress.kubernetes.io/actions.ssl-redirect: '{"Type": "redirect", "RedirectConfig": { "Protocol": "HTTPS", "Port": "443", "StatusCode": "HTTP_301"}}'   
+    
     # External DNS - For creating a Record Set in Route53
-    external-dns.alpha.kubernetes.io/hostname: kube.devopsapp.cloud     
+    external-dns.alpha.kubernetes.io/hostname: kube.devopsapp.cloud  
+    
 spec:
   ingressClassName: myapp-ingress-class
   defaultBackend: 
@@ -52,6 +53,7 @@ spec:
                 name: api
                 port:
                   number: 80
+                  
           - path: /frontend
             pathType: ImplementationSpecific
             backend:
@@ -64,11 +66,14 @@ spec:
 
 ---
 
-**STEP:** the output of the frontend when accessed at kube.devopsapp.cloud/frontend will produce
+**STEP:** the output of the frontend when accessed at **kube.devopsapp.cloud/frontend** will produce
 ![frontend](img/frontend.png)
 
 ---
-**STEP:** the output of the backend when accessed at kube.devopsapp.cloud/backend will produce
+**STEP:** the output of the backend when accessed at **kube.devopsapp.cloud/backend** will produce
 ![backend](img/backend.png)
 
----
+
+images used can be seen in my dockerhub:
+1. gwin300/frontend1
+2. gwin300/backend_api
