@@ -6,6 +6,9 @@ This simple application on the click of a button fetches the current time from t
 technologies used includes docker, Helm, kubernetes
 
 
+**STEP:** the output of the frontend will be
+![frontend](img/frontend.png)
+
 ---
-**STEP 5:** commit changes to file and push to github
-![jenkins-configuration](images/picture2.png)
+**STEP:** the output of the backend will be
+![backend](img/backend.png)
